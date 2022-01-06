@@ -5,7 +5,6 @@
 #include "rules/chess_rules.h"
 #include "types.h"
 
-
 int main() {
   ChessBoard board = ChessBoard();
   ChessRules chess_rules = ChessRules();

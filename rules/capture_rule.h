@@ -2,7 +2,7 @@
 #include "../pieces/piece.h"
 #include "rule.h"
 
-class ColourRule : public Rule {
+class CaptureRule : public Rule {
 public:
   bool checkMove(Position source, Position target, Board &board) {
     Colour colour = board.getPieceAt(source).colour;

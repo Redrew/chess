@@ -5,13 +5,15 @@
 #include "../pieces/piece.h"
 #include "../types.h"
 
+#define EMPTY nullptr
+
 using namespace std;
 
 class Board {
 public:
-  Piece *EMPTY = nullptr;
   Position dimension;
   vector<vector<Piece *>> board;
+  Colour turn = WHITE;
   Board(Position dimension) : dimension(dimension) {
     for (int h = 0; h < dimension[0]; h++) {
       vector<Piece *> row;

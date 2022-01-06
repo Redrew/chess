@@ -1,12 +1,11 @@
 #pragma once
-#include "rule.h"
+#include "piece_specific_rule.h"
+#include <iostream>
 
-class KnightRule : public Rule {
+class KnightRule : public PieceSpecificRule {
 public:
-  bool checkMove(Position source, Position target, Board &board) {
-    if (board.getPieceAt(source).type != KNIGHT) {
-      return true;
-    }
+  KnightRule() : PieceSpecificRule(KNIGHT){};
+  bool checkPieceMove(Position source, Position target, Board &board) {
     Position delta = target - source;
     return delta.l2() == 5;
   }
