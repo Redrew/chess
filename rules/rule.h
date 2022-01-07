@@ -11,10 +11,11 @@ public:
 };
 
 class RuleSet : public Rule {
-  vector<Rule *> rules;
+private:
+  std::vector<Rule *> rules;
 
 public:
-  RuleSet(vector<Rule *> rules) : rules(rules) {}
+  RuleSet(std::vector<Rule *> rules) : rules(rules) {}
   bool checkMove(Position source, Position target, Board &board) {
     for (Rule *rule : rules) {
       if (!rule->checkMove(source, target, board)) {

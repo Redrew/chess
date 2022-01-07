@@ -3,16 +3,14 @@
 
 #include "../types.h"
 
-enum PieceTypes { KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN };
-
-enum Colour { WHITE, BLACK };
-
 class Piece {
-public:
-  std::string name;
-  PieceTypes type;
-  int value;
+private:
   Colour colour;
-  Piece(std::string name, PieceTypes type, int value, Colour colour)
-      : name(name), type(type), value(value), colour(colour) {}
+
+public:
+  Piece(Colour colour) : colour(colour) {}
+  virtual PieceTypes getType() = 0;
+  virtual int getValue() = 0;
+  virtual char getChar() = 0;
+  Colour getColour() { return colour; }
 };

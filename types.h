@@ -1,5 +1,16 @@
 #pragma once
+#include <map>
 #include <stdexcept>
+#include <vector>
+
+enum PieceTypes { KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN, EMPTY };
+
+enum Colour { WHITE, BLACK, NOCOLOUR };
+
+const std::map<PieceTypes, char> PIECE_TO_CHAR = {
+    {KING, 'K'},   {QUEEN, 'Q'}, {ROOK, 'R'}, {BISHOP, 'B'},
+    {KNIGHT, 'H'}, {PAWN, 'P'},  {EMPTY, ' '}};
+const char EMPTY_SQUARE = '-';
 
 class Position {
 public:

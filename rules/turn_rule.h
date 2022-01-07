@@ -5,7 +5,7 @@
 class TurnRule : public Rule {
 public:
   bool checkMove(Position source, Position target, Board &board) {
-    Colour colour = board.getPieceAt(source).colour;
+    Colour colour = board.getPieceAt(source).getColour();
     return colour == board.turn;
   }
 };
