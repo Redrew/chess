@@ -9,7 +9,7 @@ private:
 
 public:
   bool canMove(Position position) {
-    return board.occupied(position) &&
+    return board.isOccupiedAt(position) &&
            board.getPieceAt(position).colour == player;
   }
   std::vector<Position> possibleMoves(Position position) {

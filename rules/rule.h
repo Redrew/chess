@@ -8,6 +8,9 @@
 class Rule {
 public:
   virtual bool checkMove(Position source, Position target, Board &board) = 0;
+  bool checkSelection(Position source, Board &board) {
+    return checkMove(source, Position(0, 0), board);
+  }
 };
 
 class RuleSet : public Rule {
@@ -23,5 +26,8 @@ public:
       }
     }
     return true;
+  }
+  bool checkSelection(Position source, Board &board) {
+    return checkMove(source, Position(0, 0), board);
   }
 };

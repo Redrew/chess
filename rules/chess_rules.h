@@ -6,12 +6,15 @@
 #include "rule.h"
 #include "turn_rule.h"
 
-class ChessRules : public Rule {
+class SelectionRules : public RuleSet {
 public:
-  RuleSet rules =
-      RuleSet({new TurnRule(), new MoveRule(), new OccupiedRule(),
-               new BoundRule(), new CaptureRule(), new KnightRule()});
-  bool checkMove(Position source, Position target, Board &board) {
-    return rules.checkMove(source, target, board);
-  }
+  SelectionRules()
+      : RuleSet({new BoundRule(), new TurnRule(), new OccupiedRule()}) {}
+};
+
+class ChessRules : public RuleSet {
+public:
+  ChessRules()
+      : RuleSet({new SelectionRules, new MoveRule(), new CaptureRule(),
+                 new KnightRule()}) {}
 };
