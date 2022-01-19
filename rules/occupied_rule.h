@@ -1,9 +1,9 @@
 #pragma once
 #include "rule.h"
 
-class PieceRule : public Rule {
+class OccupiedRule : public Rule {
 public:
   bool checkMove(Position source, Position target, Board &board) {
-    return board.occupied(source);
+    return board.isOccupiedAt(source);
   }
 };

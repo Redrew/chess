@@ -8,13 +8,17 @@
 class Rule {
 public:
   virtual bool checkMove(Position source, Position target, Board &board) = 0;
+  bool checkSelection(Position source, Board &board) {
+    return checkMove(source, Position(0, 0), board);
+  }
 };
 
 class RuleSet : public Rule {
-  vector<Rule *> rules;
+private:
+  std::vector<Rule *> rules;
 
 public:
-  RuleSet(vector<Rule *> rules) : rules(rules) {}
+  RuleSet(std::vector<Rule *> rules) : rules(rules) {}
   bool checkMove(Position source, Position target, Board &board) {
     for (Rule *rule : rules) {
       if (!rule->checkMove(source, target, board)) {
@@ -22,5 +26,8 @@ public:
       }
     }
     return true;
+  }
+  bool checkSelection(Position source, Board &board) {
+    return checkMove(source, Position(0, 0), board);
   }
 };

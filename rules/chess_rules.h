@@ -1,15 +1,20 @@
 #include "bound_rule.h"
-#include "colour_rule.h"
+#include "capture_rule.h"
 #include "knight_rule.h"
 #include "move_rule.h"
-#include "piece_rule.h"
+#include "occupied_rule.h"
 #include "rule.h"
+#include "turn_rule.h"
 
-class ChessRules : public Rule {
+class SelectionRules : public RuleSet {
 public:
-  RuleSet rules = RuleSet({new MoveRule(), new PieceRule(), new BoundRule(),
-                           new ColourRule(), new KnightRule()});
-  bool checkMove(Position source, Position target, Board &board) {
-    return rules.checkMove(source, target, board);
-  }
+  SelectionRules()
+      : RuleSet({new BoundRule(), new TurnRule(), new OccupiedRule()}) {}
+};
+
+class ChessRules : public RuleSet {
+public:
+  ChessRules()
+      : RuleSet({new SelectionRules, new MoveRule(), new CaptureRule(),
+                 new KnightRule()}) {}
 };
