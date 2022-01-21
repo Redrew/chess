@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "controller/chess_controller.h"
 #include "interfaces/interfaces.h"
 

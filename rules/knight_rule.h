@@ -1,6 +1,5 @@
 #pragma once
 #include "piece_specific_rule.h"
-#include <iostream>
 
 class KnightRule : public PieceSpecificRule {
 public:
