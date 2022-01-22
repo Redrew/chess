@@ -21,6 +21,8 @@ public:
     return x == other.x && y == other.y;
   }
   bool operator!=(const Position &other) { return !(operator==(other)); }
+  bool operator<(const Position &other) { return x < other.x && y < other.y; }
+  bool operator>(const Position &other) { return x > other.x && y > other.y; }
   Position operator+(const Position &other) {
     return Position(x + other.x, y + other.y);
   }
@@ -42,6 +44,12 @@ public:
   operator std::string() {
     return std::to_string(x) + " " + std::to_string(y);
   }
+  int max() {
+    return std::max(x, y);
+  }
+  Position abs() {
+    return Position(std::abs(x), std::abs(y));
+  }
   int operator[](int i) {
     if (i == 0) {
       return y;
@@ -51,7 +59,6 @@ public:
       throw std::out_of_range("only supports index range [0, 1]");
     }
   }
-  bool lessThan(Position other) { return x < other.x && y < other.y; }
-  bool in(Position other) { return x >= 0 && y >= 0 && lessThan(other); }
+  bool in(Position other) { return x >= 0 && y >= 0 && *this < other; }
   int l2() { return x * x + y * y; }
 };
